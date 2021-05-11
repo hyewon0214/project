@@ -15,13 +15,11 @@ for tr_tag in soup.find(id='regularTeamRecordList_table').find_all('tr'):
     lose=span_tag[3].get_text()
     draw=span_tag[4].get_text()
     #data.append([team,lank,win,lose,draw])
-    data.append([team,lank,total])
+    data.append([team,win,lose,draw])
 print(data)
 
 with open('baseball.csv','w') as file:
-    file.write('team,lank,total\n')
+    file.write('team,win,lose,draw\n')
     for i in data:
-        file.write('{0},{1},{2}\n'.format(i[0],i[1],i[2]))
+        file.write('{0},{1},{2},{3}\n'.format(i[0],i[1],i[2],i[3]))
     file.close()
-
-
